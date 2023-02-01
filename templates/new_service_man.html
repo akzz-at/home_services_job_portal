@@ -1,0 +1,45 @@
+{% extends 'admin_navigation.html' %}
+{% load static %}{% block body %}
+
+<div class="chit-chat-layer1">
+	<div class="col-md-12 chit-chat-layer1-left">
+               <div class="work-progres">
+                            <div class="chit-chat-heading">
+                                  New Service Man
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                  <thead>
+                                    <tr>
+                                      <th>#</th>
+                                      <th>Full Name</th>
+                                      <th>Email</th>
+                                      <th>Contact</th>
+                                      <th>Service</th>
+
+                                      <th>Status</th>
+                                        <th>Assign</th>
+                                      <th>View Detail</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                              {% for i in ser %}
+                                <tr>
+                                  <td>{{forloop.counter}}</td>
+                                  <td>{{i.user.first_name}} {{i.user.last_name}}</td>
+                                  <td>{{i.user.email}}</td>
+                                  <td>{{i.contact}}</td>
+                                  <td>{{i.service_name}}</td>
+
+                                    <td><span class="label label-danger">{{i.status.status}}</span></td>
+                                    <td><a href="{% url 'status' i.id %}" ><button class="btn btn-primary">assign_status</button></a></td>
+                                    <td><a href="{% url 'service_man_detail' i.id %}" ><button class="btn btn-info"><i class="fa fa-eye"></i></button></a></td>
+                              </tr>
+                              {% endfor %}
+                          </tbody>
+                      </table>
+                  </div>
+             </div>
+      </div>
+</div>
+    {% endblock %}

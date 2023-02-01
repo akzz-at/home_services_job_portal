@@ -1,0 +1,56 @@
+{% extends 'admin_navigation.html' %}
+{% load static %}
+{% block body %}
+
+<div class="climate">
+	<div class="container" style="width:80%">
+        <h1 style="font-weight:bold;font-family : 'Monotype Corsiva' ; color : #E6120E ;margin-top:2%" align="center">ORDER DETAIL</h1><hr>
+
+		<div class="climate-grid1" style="margin-bottom:2%">
+            <h3 style="padding:20px;background-color:Darkslategrey;color:white;font-weight:bold">Service Man Detail</h3>
+			<div class="climate-gd1-top">
+				<div class="col-md-6 climate-gd1top-left">
+					<h4>Full Name : {{pro.service.user.first_name}} {{pro.service.user.last_name}}</h4>
+					<h4>Contact : {{pro.service.contact}}</h4>
+					<h4>Email : {{pro.service.user.email}}</h4>
+					<h4>Date of join : {{pro.service.doj}}</h4>
+					<h4>Date of Birth : {{pro.service.dob}}</h4>
+					<h4>Address : {{pro.service.address}}</h4>
+				</div>
+				<div class="col-md-6 climate-gd1top-right">
+					<h4><img src="{{pro.service.image.url}}" style="width:25%;height:90px"></h4>
+					<h4><img src="{{pro.service.id_card.url}}" style="width:50%;height:95px"></h4>
+					<h4 style="color:white">Service : {{pro.service.service_name}}</h4>
+                    <h4>Experience : {{pro.service.experience}} year</h4>
+
+				</div>
+
+				<div class="clearfix"> </div>
+                <h3 style="padding:20px;background-color:black;color:white;font-weight:bold">Order detail</h3>
+                <h4 style="color:white">Booking Date : {{pro.book_date}}</h4>
+                <h4 style="color:white">Booking Days : {{pro.book_days}} days</h4>
+                <h4 style="color:white">Booking Hours : {{pro.book_hours}} hours</h4>
+            </div>
+            <div>
+            </div>
+            <h3 style="padding:20px;background-color:Darkslategrey;color:white;font-weight:bold">Customer Detail
+            </h3>
+                <div class="climate-gd1-bottom">
+				<div class="col-md-7" style="color:white">
+					<h4>Full Name : {{pro.customer.user.first_name}} {{pro.customer.user.last_name}}</h4>
+					<h4>Contact : {{pro.customer.contact}}</h4>
+					<h4>Email : {{pro.customer.user.email}}</h4>
+					<h4>Address : {{pro.customer.address}}</h4>
+				</div>
+					<div class="col-md-5">
+						<img src="{{pro.customer.image.url}}" style="width:35%;height:190px">
+					</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+		{% ifnotequal  pro.status.status 'Accept' %}
+        <center><a href="{% url 'order_status' pro.id %}"><button class="btn btn-success">Take Action</button></a></center>
+        {% endifnotequal %}
+	</div>
+</div>
+{% endblock %}

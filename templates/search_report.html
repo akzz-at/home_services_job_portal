@@ -1,0 +1,84 @@
+{% extends 'admin_navigation.html' %}
+{% block body %}
+{% load static %}
+<div class="container" style="padding:1%;background-color:lightgrey;border-radius:10px;width:90%;margin-top:4%;">
+<h3 style="font-weight:bold;margin-top:2%;margin-bottom:3%;color:grey">Search Order Between Dates</h3>
+    <form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row" style="margin-bottom:2%">
+    <div class="col-md-4">
+        <span style="font-type:bold">Enter First date<span style="color:red">*</span></span>
+    </div>
+    <div class="col-md-8">
+        <input type="date" style="width:100%;padding:5px" name="date1">
+    </div>
+    </div>
+
+    <div class="row" style="margin-bottom:2%">
+    <div class="col-md-4">
+        <span style="font-type:bold">Enter Last date<span style="color:red">*</span></span>
+    </div>
+    <div class="col-md-8">
+        <input type="date" style="width:100%;padding:5px" name="date2">
+    </div>
+    </div>
+        <div align="center">
+        <button type="submit" class="btn btn-primary" style="height:45px;margin-top:2%;width:25%;float:center">
+            <i class="fa fa-search"></i> search</button>
+</div>
+    </form>
+    <hr>
+    {% ifequal terror "found" %}
+    <div class="container" style="margin-top:%;background:white;width:100%;height:88%">
+<center><h2 style = "margin-top:2%;padding:15px;font-family : 'Monotype Corsiva' ; color : #E6120E ; font-weight : bold;margin-top:5%">View Order</h2></center><hr>
+
+<div class="table-responsive">
+                       <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                      <th>#</th>
+                                      <th>Service Man</th>
+                                      <th>Customer</th>
+                                      <th>Service_name</th>
+                                      <th>Date</th>
+                                      <th>Days</th>
+                                      <th>Hours</th>
+                                      <th>View Detail</th>
+                                      <th>Status</th>
+                                      <th>Action</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                              {% for i in order %}
+                                <tr>
+                                  <td>{{forloop.counter}}</td>
+                                  <td>{{i.service.user.first_name}} {{i.service.user.last_name}}</td>
+                                  <td>{{i.customer.user.first_name}} {{i.customer.user.last_name}}</td>
+                                  <td>{{i.service.service_name}}</td>
+                                  <td>{{i.book_date}}</td>
+                                  <td>{{i.book_days}}</td>
+                                  <td>{{i.book_hours}}</td>
+                                  <td><a href="{% url 'order_detail' i.id %}" ><i  style="color:green;font-size:28px" class="fa fa-eye"></i></a></td>
+                                  <td><span class="label label-danger">{{i.status.status}}</span>
+                                  {% ifequal i.status.status 'Accept' %}
+                                  <span style="margin-left:5%">----------</span>
+                                  {% else %}
+                                  <a href="{% url 'order_status' i.id %}" ><button class="btn btn-primary">Assign_Status</button></a>
+                                  {% endifequal %}
+                                  </td>
+                                  <td><a href="{% url 'delete_admin_order' i.id %}" ><button class="btn btn-danger" onclick="return confirm('Are you sure ?')"><i class="fa fa-trash-o"></i></button></a></td>
+                              </tr>
+                              {% endfor %}
+                          </tbody>
+                      </table>
+                  </div>
+
+ </div>
+    {% endifequal %}
+    </div>
+<style>
+td{
+font-size:15px;
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'admin_navigation.html' %}
+{% load static %}
+{% block body %}
+
+<div class="climate">
+	<div class="container" style="width:80%">
+        <h1 style="font-weight:bold;font-family : 'Monotype Corsiva' ; color : #E6120E ;margin-top:2%" align="center">SERVICE MAN DETAIL</h1><hr>
+
+        <div class="climate-grid1">
+            <h3 style="padding:20px;background-color:Darkslategrey;color:white;font-weight:bold">Service Man Detail</h3>
+			<div class="climate-gd1-top">
+				<div class="col-md-6 climate-gd1top-left">
+					<h4>Full Name : {{pro.user.first_name}} {{pro.user.last_name}}</h4>
+					<h4>Contact : {{pro.contact}}</h4>
+					<h4>Email : {{pro.user.email}}</h4>
+					<h4>Date of join : {{pro.doj}}</h4>
+					<h4>Date of Birth : {{pro.dob}}</h4>
+					<h4>Address : {{pro.address}}</h4>
+					<h4>Service : {{pro.service_name}}</h4>
+				</div>
+				<div class="col-md-6 climate-gd1top-right">
+					<h4><img src="{{pro.image.url}}" style="width:25%;height:110px"></h4>
+					{% if pro.id_card %}
+                    <h4><img src="{{pro.id_card.url}}" style="width:50%;height:115px"></h4>
+					{% else %}
+                    <h2>ID Card not Available</h2>
+                    {% endif %}
+                    <h4 style="color:white">Service : {{pro.service_name}}</h4>
+                    <h4>Experience : {{pro.experience}} year</h4>
+
+				</div>
+
+				<div class="clearfix"> </div>
+            </div>
+            <div>
+            </div>
+		</div>
+        {% ifnotequal  pro.status.status 'Accept' %}
+        <center><a href="{% url 'status' pro.id %}" ><button class="btn btn-success">Take Action</button></a></center>
+        {% endifnotequal %}
+    </div>
+</div>
+{% endblock %}

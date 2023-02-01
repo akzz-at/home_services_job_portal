@@ -1,0 +1,47 @@
+{% extends 'admin_navigation.html' %}
+{% load static %}{% block body %}
+
+<div class="chit-chat-layer1">
+	<div class="col-md-12 chit-chat-layer1-left">
+               <div class="work-progres">
+                            <div class="chit-chat-heading">
+                                  All Service Man
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                  <thead>
+                                    <tr>
+                                      <th>#</th>
+                                      <th>Full Name</th>
+                                      <th>Email</th>
+                                      <th>Contact</th>
+                                      <th>Service</th>
+                                      <th>Status</th>
+                                      <th>View Detail</th>
+                                      <th>Action</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                              {% for i in ser %}
+                                <tr>
+                                  <td>{{forloop.counter}}</td>
+                                  <td>{{i.user.first_name}} {{i.user.last_name}}</td>
+                                  <td>{{i.user.email}}</td>
+                                  <td>{{i.contact}}</td>
+                                  <td>{{i.service_name}}</td>
+                                    {% ifequal i.status.status 'Accept' %}
+                                      <td><span class="label label-success">{{i.status.status}}</span></td>
+                                    {% else %}
+                                    <td><span class="label label-danger">{{i.status.status}}</span></td>
+                                    {% endifequal %}
+                                  <td><a href="{% url 'service_man_detail' i.id %}" ><button class="btn btn-info"><i class="fa fa-eye"></i></button></a></td>
+                                  <td><a href="{% url 'delete_service_man' i.id %}" ><button class="btn btn-danger" onclick="return confirm('Are you sure ?')"><i class="fa fa-trash-o"></i></button></a></td>
+                              </tr>
+                              {% endfor %}
+                          </tbody>
+                      </table>
+                  </div>
+             </div>
+      </div>
+</div>
+    {% endblock %}

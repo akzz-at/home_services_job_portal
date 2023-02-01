@@ -1,0 +1,45 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+
+	<div class="w3l_banner_info" style="height:10px">
+		<div class="slider1">
+			<div class="callbacks_container">
+				<ul class="rslides" id="slider3">
+					<li>
+						<div class="slider1-img" style="height:90px">
+							<div class="slider_banner_info">
+
+
+							</div>
+						</div>
+					</li>
+
+
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- //banner-slider -->
+</div>
+</header>
+<section class="contact  py-lg-5 py-md-4 py-md-3 py-2" id="contact" style="margin-top:7%">
+<h3 class="mb-lg-4 mb-md-3 mb-sm-2 mb-2">Service User Home Page</h3>
+<iframe style="height:0">
+</iframe>
+<img src="{% static 'images/home3.png' %}" style="width:100%;height:500px">
+</section>
+
+{% ifequal terro "message" %}
+<script>
+	alert('Your profile has not complted plz complete your profile now');
+	window.location = "{% url 'edit_service_profile' %}";
+</script>
+{% endifequal %}
+{% ifequal terro "message1" %}
+<script>
+	alert('profile verification  is  still pending,try after sometimes.');
+	window.location = "{% url 'logout' %}";
+</script>
+{% endifequal %}
+{% endblock %}

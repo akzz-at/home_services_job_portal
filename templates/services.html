@@ -1,0 +1,52 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+
+	<div class="w3l_banner_info" style="height:10px">
+		<div class="slider1">
+			<div class="callbacks_container">
+				<ul class="rslides" id="slider3">
+					<li>
+						<div class="slider1-img" style="height:90px">
+							<div class="slider_banner_info">
+							
+								
+							</div>
+						</div>
+					</li>
+					
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- //banner-slider -->
+</div>
+</header>
+
+
+<section class="bannerbottom py-lg-5 py-md-4 py-md-3 py-2" style="margin-top:8%">
+    <h1 align="center" style="font-weight:bold;font-family : 'Monotype Corsiva' ; color : #E6120E ;">All Services</h1>
+
+    <iframe style="height:0"></iframe><div class="bannerbottom py-lg-5 py-md-4 py-md-3 py-2">
+<div class="container">
+<div class="row">
+    {% for i in ser %}
+<div class="col-md-4 col-sm-12 w3_ban1">
+<div class="card">
+  <img class="card-img-top" src="{{i.image.url}}" alt="Card image cap">
+  <div class="card-body">
+	  <h5 class="card-title">{{i.category}} <span style="color:red">(<span style="color:black;font-weight:bold">{{i.total}}</span>)</span></h5>
+    <p class="card-text">{{i.desc}}</p>
+    <a href="{% url 'explore_services' i.id %}" class="btn btn-primary">Explore</a>
+  </div>
+</div>
+</div>
+    {% endfor %}
+
+</div>
+</div>
+</div>
+</section>
+
+{% endblock %}

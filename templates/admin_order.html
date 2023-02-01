@@ -1,0 +1,54 @@
+{% extends 'admin_navigation.html' %}
+{% load static %}
+{% block body %}
+
+<div class="chit-chat-layer1">
+	<div class="col-md-12 chit-chat-layer1-left">
+               <div class="work-progres">
+                            <div class="chit-chat-heading">
+                                  View Order
+                            </div>
+
+             </div><div class="table-responsive">
+                                <table class="table table-hover">
+                                  <thead>
+                                    <tr>
+                                      <th>#</th>
+                                      <th>Service Man</th>
+                                      <th>Customer</th>
+                                      <th>Service_name</th>
+                                      <th>Date</th>
+                                      <th>Days</th>
+                                      <th>Hours</th>
+                                      <th>View Detail</th>
+                                      <th>Status</th>
+                                      <th>Action</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                              {% for i in order %}
+                                <tr>
+                                  <td>{{forloop.counter}}</td>
+                                  <td>{{i.service.user.first_name}} {{i.service.user.last_name}}</td>
+                                  <td>{{i.customer.user.first_name}} {{i.customer.user.last_name}}</td>
+                                  <td>{{i.service.service_name}}</td>
+                                  <td>{{i.book_date}}</td>
+                                  <td>{{i.book_days}}</td>
+                                  <td>{{i.book_hours}}</td>
+                                  <td><a href="{% url 'order_detail' i.id %}" ><i  style="color:green;font-size:28px" class="fa fa-eye"></i></a></td>
+                                  <td><span class="label label-danger">{{i.status.status}}</span>
+                                  {% ifequal i.status.status 'Accept' %}
+                                  <span style="margin-left:5%">----------</span>
+                                  {% else %}
+                                  <a href="{% url 'order_status' i.id %}" ><button class="btn btn-primary">Assign_Status</button></a>
+                                  {% endifequal %}
+                                  </td>
+                                  <td><a href="{% url 'delete_admin_order' i.id %}" ><button class="btn btn-danger" onclick="return confirm('Are you sure ?')"><i class="fa fa-trash-o"></i></button></a></td>
+                              </tr>
+                              {% endfor %}
+                          </tbody>
+                      </table>
+                  </div>
+      </div>
+</div>
+    {% endblock %}

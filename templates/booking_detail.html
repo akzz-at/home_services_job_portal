@@ -1,0 +1,64 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+<style>
+    th{
+    color:black;
+    font-weight:bold;
+    }
+</style>
+
+	<div class="w3l_banner_info" style="height:10px">
+		<div class="slider1">
+			<div class="callbacks_container">
+				<ul class="rslides" id="slider3">
+					<li>
+						<div class="slider1-img" style="height:90px">
+							<div class="slider_banner_info">
+
+
+							</div>
+						</div>
+					</li>
+
+
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- //banner-slider -->
+</div>
+</header>
+
+<div class="container-fluid" style="margin-top:10%">
+               <div align="center" class="container">
+                            <div class="container-fluid">
+                               <h2 style="font-weight:bold;font-family : 'Monotype Corsiva' ; color : #E6120E ;margin-top:5%" align="center">Booking Detail</h2><hr>
+                            </div>
+                            <div class="row" style="margin-bottom:1%;border-radius:8px;padding:12px;width:80%;border:1px solid lightgrey">
+                                <div class="col-md-4">
+                                    <img src="{{order.service.image.url}}" style="width:60%;border-radius:50%;height:180px">
+                                </div>
+                                <div class="col-md-4" align="left">
+                                    <h5 style="font-weight:bold">{{order.service.user.first_name}} {{order.service.user.last_name}}</h5><iframe style="height:0"></iframe>
+                                    <ul style="color:grey">
+                                        <li>Mobile No. :- {{order.service.contact}}</li>
+                                        <li>Address :- {{order.service.address}}</li>
+                                        <li>Work :- {{order.service.experience}} year</li>
+                                        <li>Experience :- {{order.service.contact}}</li>
+                                        <h6 style="color:red;font-weight:bold">Working Detail</h6><iframe style="height:0"></iframe>
+                                        <li>Service :- {{order.service.service_name}}</li>
+                                        <li>Booking Date :- {{order.book_date}}</li>
+                                        <li>Booking Days :- {{order.book_days}} Days</li>
+                                        <li>Booking Hours :- {{order.book_hours}} Hours</li>
+
+                                    </ul>
+                                </div>
+                                <div class="col-md-4">
+                                     <img src="{{order.service.id_card.url}}" style="width:75%">
+                                    <h4>{{order.service.id_type}}</h4>
+                                </div>
+                            </div>
+               </div>
+</div>
+{% endblock %}

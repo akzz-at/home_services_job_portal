@@ -1,0 +1,65 @@
+{% extends 'admin_navigation.html' %}
+{% load static %}{% block body %}
+
+	 <div class="market-updates">
+		 <a href="{% url 'all_customer' %}">
+			<div class="col-md-4 market-update-gd">
+				<div class="market-update-block clr-block-1">
+					<div class="col-md-8 market-update-left">
+						<h3>{{customer}}</h3>
+						<h4>Registered User</h4>
+						<p>All access are given .</p>
+					</div>
+					<div class="col-md-4 market-update-right">
+						<i style="border-radius:50%;font-size:45px;color:Lime;background:white;padding:18px" class="fa fa-users"> </i>
+					</div>
+				  <div class="clearfix"> </div>
+				</div>
+			</div></a>
+			<a href="{% url 'all_service_man' %}" ><div class="col-md-4 market-update-gd">
+				<div class="market-update-block clr-block-2">
+				 <div class="col-md-8 market-update-left">
+					<h3>{{service_man}}</h3>
+					<h4>Total Service Man</h4>
+					<p>Service Man are very Disciplined.</p>
+				  </div>
+					<div class="col-md-4 market-update-right">
+						<i class="fa fa-eye"> </i>
+					</div>
+				  <div class="clearfix"> </div>
+				</div>
+			</div></a>
+			<a href="{% url 'view_service' %}" ><div class="col-md-4 market-update-gd">
+				<div class="market-update-block clr-block-3">
+					<div class="col-md-8 market-update-left">
+						<h3>{{service}}</h3>
+						<h4>Service Category</h4>
+						<p>Very important category are avail</p>
+					</div>
+					<div class="col-md-4 market-update-right">
+						<i class="fa fa-envelope-o"> </i>
+					</div>
+				  <div class="clearfix"> </div>
+				</div>
+			</div></a>
+		   <div class="clearfix"> </div>
+		</div>
+<footer class="site-footer" style="margin-top:15%">
+      <div class="container">
+
+        <div class="row pt-5 mt-5 text-center">
+          <div class="col-md-12">
+            <p style = "font-size : 30pt ; color : #FF0000 ; font-weight : bold">
+
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All Rights Reserved <span style = "color : brown">|</span> <span style = "color : #006400">This website is made with <i class="fas fa-heart icon-heart text-warning" aria-hidden="true"></i> by </span><a class= "glow" href="#" target="_blank" >Pankaj Panjwani</a>
+
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </footer>
+
+
+
+{% endblock %}

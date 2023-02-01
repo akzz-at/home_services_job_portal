@@ -1,0 +1,75 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+{% if error %}
+<script>
+	alert('Message sent successfully,We will contact you soon.');
+	window.location="{% url 'home' %}";
+</script>
+{% endif %}
+	<div class="w3l_banner_info" style="height:10px">
+		<div class="slider1">
+			<div class="callbacks_container">
+				<ul class="rslides" id="slider3">
+					<li>
+						<div class="slider1-img" style="height:90px">
+							<div class="slider_banner_info">
+							
+								
+							</div>
+						</div>
+					</li>
+					
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- //banner-slider -->
+</div>
+</header>
+
+<section class="contact  py-lg-5 py-md-4 py-md-3 py-2" id="contact" style="margin-top:7%">
+<h3 class="mb-lg-4 mb-md-3 mb-sm-2 mb-2">Contact US</h3>
+	<!-- contact -->
+	<iframe  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3665.782761911858!2d77.46339231490936!3d23.250990984837905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c438fbf8a7929%3A0x5e347262325ca71!2sYCT%20Academy!5e0!3m2!1shi!2sin!4v1583523254326!5m2!1shi!2sin"
+					    allowfullscreen></iframe>
+	<section class="wthree-row py-5 w3-contact" id="contact">
+		<div class="container py-md-5">
+			<h4 class="w3ls-title text-center text-uppercase pb-md-5 pb-4">contact Form</h4>
+			<div class="row contact-form ">
+				<div class="col-lg-6 wthree-form-left">
+					<!-- contact form grid -->
+					<div class="contact-top1">
+						<form action="" method="post">
+							{% csrf_token %}
+							<div class="form-group">
+								<label for="contactusername">Name</label>
+								<input type="text" class="form-control" id="contactusername" name="name" required>
+							</div>
+							<div class="form-group">
+								<label for="contactemail">Email</label>
+								<input type="email" class="form-control" id="contactemail" name="email"required>
+							</div>
+							<div class="form-group">
+								<label for="contactcomment">Your Message</label>
+								<textarea class="form-control" rows="5" id="contactcomment" name="message" required></textarea>
+							</div>
+							<button type="submit" class="btn btn-info btn-block">Submit</button>
+						</form>
+					</div>
+					<!--  //contact form grid ends here -->
+				</div>
+				<!-- contact details -->
+				<!-- contact map grid -->
+				<div class="col-lg-6  mt-lg-0 mt-5 map contact-right">
+                    <img src="{% static 'images/contact.gif' %}" style="width:60%">
+				</div>
+
+			</div>
+        </div>
+	</section>
+	</section>
+	<!-- //contact -->
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'admin_navigation.html' %}
+{% load static %}
+{% block body %}
+
+     <div class="signup-main" style="width:100%;margin-top:0">
+    	 <div class="signup-head">
+				<h1>Change Status</h1>
+			</div>
+			<div class="signup-block">
+				<form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+					<input type="text" name="id" value="{{pro.id}}" readonly>
+                    <select name="stat" style="width:100%;padding:8px;margin-top:2%;border:1px solid lightgrey ">
+                        <option value="Accept">Accept</option>
+                        <option value="Reject">Reject</option>
+                    </select>
+
+					<input type="submit" value="Update Status" style="margin-top:10%">
+				</form>
+			</div>
+    </div>
+
+{% if error %}
+<script>
+    alert('Update status Successfully');
+    window.location = "{% url 'admin_order' %}";
+</script>
+{% endif %}
+    {% endblock %}

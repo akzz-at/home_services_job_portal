@@ -1,0 +1,42 @@
+{% extends 'admin_navigation.html' %}
+{% load static %}
+{% block body %}
+
+<div class="signup-page-main" style="margin-top:0">
+     <div class="signup-main" style="width:100%;margin-top:6%">
+    	 <div class="signup-head">
+				<h1>Update Service</h1>
+			</div>
+			<div class="signup-block">
+				<form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+					<input type="text" name="cat" placeholder="Service Name" value="{{ser.category}}" required="">
+                    <div class="row">
+                        <div class="col-md-8">
+					        <input type="file" name="image" style="width:100%;padding:8px;margin-top:2%;border:1px solid lightgrey ">
+                        </div>
+                        <div class="col-md-4">
+                            <img src="{{ser.image.url}}" style="width:100%;height:120px">
+                        </div>
+                    </div>
+                    <textarea id="story" name="desc" required="" style="width:100%;padding:8px;margin-top:2%;border:1px solid lightgrey"></textarea>
+					<input type="submit" value="Update Service" style="margin-top:10%">
+				</form>
+			</div>
+    </div>
+</div>
+
+{% if error %}
+<script>
+    alert('Updated Successfully');
+    window.location = "{% url 'view_service' %}";
+</script>
+{% endif %}
+
+<script>
+    document.getElementById('story').onclick = function() {
+  document.getElementById('story').innerHTML = '{{ser.desc}}';
+}
+</script>
+
+{% endblock %}

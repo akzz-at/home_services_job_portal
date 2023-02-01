@@ -1,0 +1,37 @@
+{% extends 'admin_navigation.html' %}
+{% load static %}{% block body %}
+
+<div class="chit-chat-layer1">
+	<div class="col-md-12 chit-chat-layer1-left">
+               <div class="work-progres">
+                            <div class="chit-chat-heading">
+                                  Read Messages
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                  <thead>
+                                    <tr>
+                                      <th>#</th>
+                                      <th>Name</th>
+                                      <th>Email</th>
+                                      <th>Message</th>
+                                      <th>Action</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                              {% for i in ser %}
+                                <tr>
+                                  <td>{{forloop.counter}}</td>
+                                  <td>{{i.name}}</td>
+                                  <td>{{i.email}}</td>
+                                  <td>{{i.message1}}</td>
+                                  <td style="color:red">seen message</td>
+                              </tr>
+                              {% endfor %}
+                          </tbody>
+                      </table>
+                  </div>
+             </div>
+      </div>
+</div>
+{% endblock %}

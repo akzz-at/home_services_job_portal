@@ -1,0 +1,42 @@
+{% extends 'admin_navigation.html' %}
+{% load static %}
+{% block body %}
+
+<div class="chit-chat-layer1">
+	<div class="col-md-12 chit-chat-layer1-left">
+               <div class="work-progres">
+                            <div class="chit-chat-heading">
+                                  All Services
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                  <thead>
+                                    <tr>
+                                      <th>#</th>
+                                      <th>Id</th>
+                                      <th>Service Name</th>
+                                      <th>Image</th>
+                                      <th>Description</th>
+                                      <th>Action</th>
+
+                                  </tr>
+                              </thead>
+                              <tbody>
+                              {% for i in ser %}
+                                <tr>
+                                  <td>{{forloop.counter}}</td>
+                                  <td>{{i.id}}</td>
+                                  <td>{{i.category}}</td>
+                                  <td><img src="{{i.image.url}}" style="width:90px;height:80px" /></td>
+                                  <td>{{i.desc}}</td>
+                                  <td style="width:100px"><a href="{% url 'edit_service' i.id %}" ><button class="btn btn-success"><i class="fa fa-edit"></i></button></a>
+                                  <a href="{% url 'delete_service' i.id %}" ><button class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="fa fa-trash-o"></i></button></a></td>
+                              </tr>
+                              {% endfor %}
+                          </tbody>
+                      </table>
+                  </div>
+             </div>
+      </div>
+</div>
+    {% endblock %}

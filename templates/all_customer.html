@@ -1,0 +1,46 @@
+{% extends 'admin_navigation.html' %}
+{% load static %}
+{% block body %}
+
+<div class="chit-chat-layer1">
+	<div class="col-md-12 chit-chat-layer1-left">
+               <div class="work-progres">
+                            <div class="chit-chat-heading">
+                                  All User
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                  <thead>
+                                    <tr>
+                                      <th>#</th>
+                                      <th>Full Name</th>
+                                      <th>Image</th>
+                                      <th>Email</th>
+                                      <th>Contact</th>
+                                      <th>Address</th>
+                                      <th>Action</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                              {% for i in ser %}
+                              {% if not i.user.is_staff %}
+                                <tr>
+                                  <td>{{forloop.counter}}</td>
+                                  <td>{{i.user.first_name}} {{i.user.last_name}}</td>
+                                  <td><img src="{{i.image.url}}" style="width:90px;height:80px" /></td>
+                                  <td>{{i.user.email}}</td>
+                                  <td>{{i.contact}}</td>
+                                  <td>{{i.address}}</td>
+
+                                  <td><span class="label label-danger">{{i.status.status}}</span></td>
+                                  <td><center><a href="{% url 'delete_customer' i.id %}" ><button class="btn btn-danger" onclick="return confirm('Are you sure ?')"><i class="fa fa-trash-o"></i></button></a></center></td>
+                              </tr>
+                              {% endif %}
+                              {% endfor %}
+                          </tbody>
+                      </table>
+                  </div>
+             </div>
+      </div>
+</div>
+    {% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+<style>
+    th{
+    color:black;
+    font-weight:bold;
+    }
+</style>
+
+	<div class="w3l_banner_info" style="height:10px">
+		<div class="slider1">
+			<div class="callbacks_container">
+				<ul class="rslides" id="slider3">
+					<li>
+						<div class="slider1-img" style="height:90px">
+							<div class="slider_banner_info">
+
+
+							</div>
+						</div>
+					</li>
+
+
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- //banner-slider -->
+</div>
+</header>
+
+<div class="container-fluid" style="margin-top:10%">
+               <div align="center" class="container">
+                            <div class="container-fluid">
+                               <h2 style="font-weight:bold;font-family : 'Monotype Corsiva' ; color : #E6120E ;margin-top:5%" align="center">{{ser.category}}</h2><hr>
+                            </div>
+                   {% for i in order %}
+                            <div class="row" style="margin-bottom:1%;border-radius:8px;padding:12px;width:80%;border:1px solid lightgrey">
+                                <div class="col-md-4">
+                                    <img src="{{i.image.url}}" style="width:60%;border-radius:50%;height:180px">
+                                </div>
+                                <div class="col-md-4" align="left">
+                                    <h4 style="font-weight:bold">{{i.user.first_name}} {{i.user.last_name}}</h4>
+                                    <ul style="color:grey">
+                                        <li>Mobile No. :- {{i.contact}}</li>
+                                        <li>Address :- {{i.address}}</li>
+                                        <li>Work :- {{i.experience}} year</li>
+                                        <li>Experience :- {{i.contact}}</li>
+                                        <a href="{% url 'booking' i.id %}" ><button class="btn btn-success" style="margin-top:8%;width:60%">Book Now</button></a>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4">
+                                     <img src="{{i.id_card.url}}" style="width:75%">
+                                    <h4>{{i.id_type}}</h4>
+                                </div>
+                            </div>
+                   {% endfor %}
+               </div>
+</div>
+    {% endblock %}
