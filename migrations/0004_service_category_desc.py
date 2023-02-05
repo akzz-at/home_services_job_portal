@@ -15,4 +15,4 @@ class Migration(migrations.Migration):
             name='desc',
             field=models.CharField(max_length=100, null=True),
         ),
-    ]
+    ] 
